@@ -17,6 +17,9 @@ import android.widget.Spinner;
 import complexability.motionmusic.R;
 
 public class MainActivity extends AppCompatActivity {
+
+    Hands rightHand = new Hands();
+    Hands leftHand  = new Hands();
     int leftEffectCount;
     int rightEffectCount;
     String LeftInstrument;
@@ -34,26 +37,31 @@ public class MainActivity extends AppCompatActivity {
         //Log.d("Selected Item", "Left Instrument:" + LeftInstrument);
         Log.d("onCreate", "leftEffectCount:" + leftEffectCount);
         Log.d("onCreate", "rightEffectCount:" + rightEffectCount);
-
-        //Create Left Instrument spinner
+        /**********************************************************************************************
+         *Create Left Instrument spinner
+         ***********************************************************************************************/
         Spinner leftInstrumentSpinner = (Spinner) findViewById(R.id.left_instrument_spinner);
         ArrayAdapter<CharSequence> leftInstrumentAdapter = ArrayAdapter.createFromResource(this, R.array.Instruments_array, android.R.layout.simple_spinner_dropdown_item);
         leftInstrumentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         leftInstrumentSpinner.setAdapter(leftInstrumentAdapter);
         leftInstrumentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            /*
+            Event handler for the effect dropdown menus
+             */
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                LeftInstrument =  (String) parent.getItemAtPosition(position);
-                //Log.d("Selected Item", "Left Instrument:" + LeftInstrument);
+                //LeftInstrument =  (String) parent.getItemAtPosition(position);
+                leftHand.changeInstrument((String) parent.getItemAtPosition(position));
+                Log.d("Selected Item", "Left Instrument:" + leftHand.getInstrument());
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-
-
-        //Create Left Instrument spinner
+        /**********************************************************************************************
+         *Create Right Instrument spinner
+         ***********************************************************************************************/
         Spinner rightInstrumentSpinner = (Spinner) findViewById(R.id.right_instrument_spinner);
         ArrayAdapter<CharSequence> rightInstrumentAdapter = ArrayAdapter.createFromResource(this, R.array.Instruments_array, android.R.layout.simple_spinner_dropdown_item);
         rightInstrumentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -61,8 +69,16 @@ public class MainActivity extends AppCompatActivity {
         rightInstrumentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                RightInstrument =  (String) parent.getItemAtPosition(position);
+                //RightInstrument =  (String) parent.getItemAtPosition(position);
                 //Log.d("Selected Item", "Right Instrument:" + RightInstrument);
+                rightHand.changeInstrument((String) parent.getItemAtPosition(position));
+                Log.d("Selected Item", "Right Instrument:" + rightHand.getInstrument());
+                /*
+                if(RightInstrument!=null) {
+                    rightHand.changeInstrument(RightInstrument);
+                    Log.d("Selected Item", "Right Instrument:" + rightHand.getInstrument());
+                }
+                */
             }
 
             @Override
@@ -72,7 +88,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //====================================================================================================================================================================
-        //Left Create effect 1 spinner
+        /**********************************************************************************************
+         *Left Create effect 1 spinner
+         ***********************************************************************************************/
         Spinner leftEffectSpinner_1 = (Spinner) findViewById(R.id.left_effect_1_spinner);
         ArrayAdapter<CharSequence> leftEffectAdapter_1 = ArrayAdapter.createFromResource(this, R.array.EffectName_array, android.R.layout.simple_spinner_dropdown_item);
         leftEffectAdapter_1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -80,8 +98,13 @@ public class MainActivity extends AppCompatActivity {
         leftEffectSpinner_1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                LeftEffect_1 = (String) parent.getItemAtPosition(position);
+                //LeftEffect_1 = (String) parent.getItemAtPosition(position);
                 //Log.d("Selected Item", "Left Effect_1:" + LeftEffect_1);
+               // if(LeftInstrument != null){
+                leftHand.changeEffect((String) parent.getItemAtPosition(position), 1);
+                Log.d("Selected Item", "Left Effect_1:" + leftHand.getEffect(1));
+
+                //}
             }
 
             @Override
@@ -89,7 +112,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        //Left Create effect 2 spinner
+        /**********************************************************************************************
+         *Left Create effect 2 spinner
+         ***********************************************************************************************/
         Spinner leftEffectSpinner_2 = (Spinner) findViewById(R.id.left_effect_2_spinner);
         ArrayAdapter<CharSequence> leftEffectAdapter_2 = ArrayAdapter.createFromResource(this, R.array.EffectName_array, android.R.layout.simple_spinner_dropdown_item);
         leftEffectAdapter_2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -97,8 +122,9 @@ public class MainActivity extends AppCompatActivity {
         leftEffectSpinner_2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                LeftEffect_2 = (String) parent.getItemAtPosition(position);
-                //Log.d("Selected Item", "Left Effect_2:" + LeftEffect_2);
+                //LeftEffect_2 = (String) parent.getItemAtPosition(position);
+                leftHand.changeEffect((String) parent.getItemAtPosition(position), 2);
+                Log.d("Selected Item", "Left Effect_2:" + leftHand.getEffect(2));
             }
 
             @Override
@@ -106,7 +132,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        //Left Create effect 3 spinner
+        /**********************************************************************************************
+         *Left Create effect 3 spinner
+         ***********************************************************************************************/
         Spinner leftEffectSpinner_3 = (Spinner) findViewById(R.id.left_effect_3_spinner);
         ArrayAdapter<CharSequence> leftEffectAdapter_3 = ArrayAdapter.createFromResource(this, R.array.EffectName_array, android.R.layout.simple_spinner_dropdown_item);
         leftEffectAdapter_3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -114,8 +142,10 @@ public class MainActivity extends AppCompatActivity {
         leftEffectSpinner_3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                LeftEffect_3= (String) parent.getItemAtPosition(position);
+                //LeftEffect_3= (String) parent.getItemAtPosition(position);
                 //Log.d("Selected Item", "Left Effect_3:" + LeftEffect_3);
+                leftHand.changeEffect((String) parent.getItemAtPosition(position), 3);
+                Log.d("Selected Item", "Left Effect_3:" + leftHand.getEffect(3));
             }
 
             @Override
@@ -125,7 +155,9 @@ public class MainActivity extends AppCompatActivity {
         });
         //====================================================================================================================================================================
         //====================================================================================================================================================================
-        //Right Create effect 1 spinner
+        /**********************************************************************************************
+         *Right Create effect 1 spinner
+         ***********************************************************************************************/
         Spinner rightEffectSpinner_1 = (Spinner) findViewById(R.id.right_effect_1_spinner);
         ArrayAdapter<CharSequence> rightEffectAdapter_1 = ArrayAdapter.createFromResource(this, R.array.EffectName_array, android.R.layout.simple_spinner_dropdown_item);
         rightEffectAdapter_1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -133,8 +165,11 @@ public class MainActivity extends AppCompatActivity {
         rightEffectSpinner_1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                RightEffect_1 = (String) parent.getItemAtPosition(position);
+                //RightEffect_1 = (String) parent.getItemAtPosition(position);
                 //Log.d("Selected Item", "RightEffect_1:" + RightEffect_1);
+                rightHand.changeEffect((String) parent.getItemAtPosition(position), 1);
+                Log.d("Selected Item", "Right Effect_1:" + rightHand.getEffect(1));
+
             }
 
             @Override
@@ -142,7 +177,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        //Right Create effect 2 spinner
+        /**********************************************************************************************
+         *Right Create effect 2 spinner
+         ***********************************************************************************************/
         Spinner rightEffectSpinner_2 = (Spinner) findViewById(R.id.right_effect_2_spinner);
         ArrayAdapter<CharSequence> rightEffectAdapter_2 = ArrayAdapter.createFromResource(this, R.array.EffectName_array, android.R.layout.simple_spinner_dropdown_item);
         rightEffectAdapter_2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -150,8 +187,10 @@ public class MainActivity extends AppCompatActivity {
         rightEffectSpinner_2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                RightEffect_2 = (String) parent.getItemAtPosition(position);
+                //RightEffect_2 = (String) parent.getItemAtPosition(position);
                 //Log.d("Selected Item", "RightEffect_2:" + RightEffect_2);
+                rightHand.changeEffect((String) parent.getItemAtPosition(position), 2);
+                Log.d("Selected Item", "Right Effect_2:" + rightHand.getEffect(2));
             }
 
             @Override
@@ -159,7 +198,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        //Right Create effect 3 spinner
+        /**********************************************************************************************
+         *Right Create effect 3 spinner
+         ***********************************************************************************************/
         Spinner rightEffectSpinner_3 = (Spinner) findViewById(R.id.right_effect_3_spinner);
         ArrayAdapter<CharSequence> rightEffectAdapter_3 = ArrayAdapter.createFromResource(this, R.array.EffectName_array, android.R.layout.simple_spinner_dropdown_item);
         rightEffectAdapter_3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -167,8 +208,10 @@ public class MainActivity extends AppCompatActivity {
         rightEffectSpinner_3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                RightEffect_3 = (String) parent.getItemAtPosition(position);
+                //RightEffect_3 = (String) parent.getItemAtPosition(position);
                 //Log.d("Selected Item", "RightEffect_2:" + RightEffect_3);
+                rightHand.changeEffect((String) parent.getItemAtPosition(position), 3);
+                Log.d("Selected Item", "Right Effect_3:" + rightHand.getEffect(3));
             }
 
             @Override
@@ -246,41 +289,43 @@ public class MainActivity extends AppCompatActivity {
         Spinner effect_1 = (Spinner) findViewById(R.id.right_effect_1_spinner);
         Spinner effect_2 = (Spinner) findViewById(R.id.right_effect_2_spinner);
         Spinner effect_3 = (Spinner) findViewById(R.id.right_effect_3_spinner);
-        if (rightEffectCount < 3) {
-            rightEffectCount++;
-            switch (rightEffectCount) {
-                case 1:
-                    effect_1.setVisibility(view.VISIBLE);
-                    break;
-                case 2:
-                    effect_2.setVisibility(view.VISIBLE);
-                    break;
-                case 3:
-                    effect_3.setVisibility(view.VISIBLE);
-                    break;
-            }
+        rightHand.increaseEffectCount();
+
+        //if (rightHand.getEffectCount() < 3) {
+        switch (rightHand.getEffectCount()) {
+            case 1:
+                effect_1.setVisibility(view.VISIBLE);
+                break;
+            case 2:
+                effect_2.setVisibility(view.VISIBLE);
+                break;
+            case 3:
+                effect_3.setVisibility(view.VISIBLE);
+                break;
         }
+        //}
         //Log.d("hello", "rightEffectCount:" + rightEffectCount);
     }
     public void rightRemoveEffect(View view){
         Spinner effect_1 = (Spinner) findViewById(R.id.right_effect_1_spinner);
         Spinner effect_2 = (Spinner) findViewById(R.id.right_effect_2_spinner);
         Spinner effect_3 = (Spinner) findViewById(R.id.right_effect_3_spinner);
-        if(rightEffectCount > 0) {
-            switch(rightEffectCount) {
-                case 3:
-                    effect_3.setVisibility(view.GONE);
-                    break;
-                case 2:
-                    effect_2.setVisibility(view.GONE);
-                    break;
-                case 1:
-                    effect_1.setVisibility(view.GONE);
-                    break;
-            }
-            rightEffectCount--;
-
+        //if(rightEffectCount > 0) {
+        switch(rightHand.getEffectCount()) {
+            case 3:
+                effect_3.setVisibility(view.GONE);
+                break;
+            case 2:
+                effect_2.setVisibility(view.GONE);
+                break;
+            case 1:
+                effect_1.setVisibility(view.GONE);
+                break;
         }
+        rightHand.decreaseEffectCount();
+            //rightEffectCount--;
+
+        //}
         //Log.d("hello", "leftEffectCount:" + leftEffectCount);
     }
     /*
