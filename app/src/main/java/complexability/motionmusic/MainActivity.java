@@ -17,8 +17,8 @@ import android.widget.Spinner;
 import complexability.motionmusic.R;
 
 public class MainActivity extends AppCompatActivity {
-    int leftEffectCount = 0;
-    int rightEffectCount = 0;
+    int leftEffectCount;
+    int rightEffectCount;
     String LeftInstrument;
     String RightInstrument;
     String LeftEffect_1, LeftEffect_2, LeftEffect_3;
@@ -31,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Log.d("Selected Item", "Left Instrument:" + LeftInstrument);
+        //Log.d("Selected Item", "Left Instrument:" + LeftInstrument);
+        Log.d("onCreate", "leftEffectCount:" + leftEffectCount);
+        Log.d("onCreate", "rightEffectCount:" + rightEffectCount);
 
         //Create Left Instrument spinner
         Spinner leftInstrumentSpinner = (Spinner) findViewById(R.id.left_instrument_spinner);
@@ -42,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 LeftInstrument =  (String) parent.getItemAtPosition(position);
-                Log.d("Selected Item", "Left Instrument:" + LeftInstrument);
+                //Log.d("Selected Item", "Left Instrument:" + LeftInstrument);
             }
 
             @Override
@@ -60,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 RightInstrument =  (String) parent.getItemAtPosition(position);
-                Log.d("Selected Item", "Right Instrument:" + RightInstrument);
+                //Log.d("Selected Item", "Right Instrument:" + RightInstrument);
             }
 
             @Override
@@ -79,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 LeftEffect_1 = (String) parent.getItemAtPosition(position);
-                Log.d("Selected Item", "Left Effect_1:" + LeftEffect_1);
+                //Log.d("Selected Item", "Left Effect_1:" + LeftEffect_1);
             }
 
             @Override
@@ -96,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 LeftEffect_2 = (String) parent.getItemAtPosition(position);
-                Log.d("Selected Item", "Left Effect_2:" + LeftEffect_2);
+                //Log.d("Selected Item", "Left Effect_2:" + LeftEffect_2);
             }
 
             @Override
@@ -113,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 LeftEffect_3= (String) parent.getItemAtPosition(position);
-                Log.d("Selected Item", "Left Effect_3:" + LeftEffect_3);
+                //Log.d("Selected Item", "Left Effect_3:" + LeftEffect_3);
             }
 
             @Override
@@ -132,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 RightEffect_1 = (String) parent.getItemAtPosition(position);
-                Log.d("Selected Item", "RightEffect_1:" + RightEffect_1);
+                //Log.d("Selected Item", "RightEffect_1:" + RightEffect_1);
             }
 
             @Override
@@ -149,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 RightEffect_2 = (String) parent.getItemAtPosition(position);
-                Log.d("Selected Item", "RightEffect_2:" + RightEffect_2);
+                //Log.d("Selected Item", "RightEffect_2:" + RightEffect_2);
             }
 
             @Override
@@ -166,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 RightEffect_3 = (String) parent.getItemAtPosition(position);
-                Log.d("Selected Item", "RightEffect_2:" + RightEffect_3);
+                //Log.d("Selected Item", "RightEffect_2:" + RightEffect_3);
             }
 
             @Override
@@ -217,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
         }
-        Log.d("hello", "leftEffectCount:" + leftEffectCount);
+        //Log.d("hello", "leftEffectCount:" + leftEffectCount);
     }
     public void leftRemoveEffect(View view){
         Spinner effect_1 = (Spinner) findViewById(R.id.left_effect_1_spinner);
@@ -238,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
             leftEffectCount--;
 
         }
-        Log.d("hello", "leftEffectCount:" + leftEffectCount);
+        //Log.d("hello", "leftEffectCount:" + leftEffectCount);
     }
     public void rightAddEffect(View view) {
         Spinner effect_1 = (Spinner) findViewById(R.id.right_effect_1_spinner);
@@ -258,7 +260,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
         }
-        Log.d("hello", "rightEffectCount:" + rightEffectCount);
+        //Log.d("hello", "rightEffectCount:" + rightEffectCount);
     }
     public void rightRemoveEffect(View view){
         Spinner effect_1 = (Spinner) findViewById(R.id.right_effect_1_spinner);
@@ -279,9 +281,9 @@ public class MainActivity extends AppCompatActivity {
             rightEffectCount--;
 
         }
-        Log.d("hello", "leftEffectCount:" + leftEffectCount);
+        //Log.d("hello", "leftEffectCount:" + leftEffectCount);
     }
-
+    /*
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
         Log.d("save state", "onSaveInstanceState");
@@ -297,7 +299,8 @@ public class MainActivity extends AppCompatActivity {
         outState.putString("RIGHT_EFFECT_2", RightEffect_2);
         outState.putString("RIGHT_EFFECT_3", RightEffect_3);
     }
-
+    */
+    /*
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
@@ -308,6 +311,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("Restored","right_effect count:" + rightEffectCount);
 
     }
+    */
 }
 
 
