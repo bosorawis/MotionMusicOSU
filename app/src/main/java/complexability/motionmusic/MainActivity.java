@@ -30,14 +30,14 @@ public class MainActivity extends AppCompatActivity {
     private String LeftEffect_1, LeftEffect_2, LeftEffect_3;
     private String RightEffect_1, RightEffect_2, RightEffect_3;
     */
-    private Spinner leftInstrumentSpinner;
-    private Spinner rightInstrumentSpinner;
-    private Spinner leftEffectSpinner_1;
-    private Spinner leftEffectSpinner_2;
-    private Spinner leftEffectSpinner_3;
-    private Spinner rightEffectSpinner_1;
-    private Spinner rightEffectSpinner_2;
-    private Spinner rightEffectSpinner_3;
+    Spinner leftInstrumentSpinner;
+    Spinner rightInstrumentSpinner;
+    Spinner leftEffectSpinner_1;
+    Spinner leftEffectSpinner_2;
+    Spinner leftEffectSpinner_3;
+    Spinner rightEffectSpinner_1;
+    Spinner rightEffectSpinner_2;
+    Spinner rightEffectSpinner_3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
