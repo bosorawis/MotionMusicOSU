@@ -84,7 +84,10 @@ public class Hands {
                 return "NONE";
         }
     }
-
+/*****************************************************
+ * Will replace literal strings for effects and instruments
+ * in the future when the app has synth built-in
+ *****************************************************/
     /**
      * Created by Sorawis on 12/1/2015.
      */
@@ -111,8 +114,15 @@ public class Hands {
      */
     public static class Instrument {
         protected String instrument_name;
+
+        //There will be other parameters in the future
+
         Instrument(String name){
             instrument_name = name;
+        }
+
+        public String getInstrument_name(){
+            return instrument_name;
         }
     }
 }
