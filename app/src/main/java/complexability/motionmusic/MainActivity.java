@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
     String RightInstrument;
     String LeftEffect_1, LeftEffect_2, LeftEffect_3;
     String RightEffect_1, RightEffect_2, RightEffect_3;
-
-
+    private Spinner leftInstrumentSpinner;
+    private Spinner rightInstrumentSpinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         /**********************************************************************************************
          *Create Left Instrument spinner
          ***********************************************************************************************/
-        Spinner leftInstrumentSpinner = (Spinner) findViewById(R.id.left_instrument_spinner);
+        leftInstrumentSpinner = (Spinner) findViewById(R.id.left_instrument_spinner);
         ArrayAdapter<CharSequence> leftInstrumentAdapter = ArrayAdapter.createFromResource(this, R.array.Instruments_array, android.R.layout.simple_spinner_dropdown_item);
         leftInstrumentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         leftInstrumentSpinner.setAdapter(leftInstrumentAdapter);
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         /**********************************************************************************************
          *Create Right Instrument spinner
          ***********************************************************************************************/
-        Spinner rightInstrumentSpinner = (Spinner) findViewById(R.id.right_instrument_spinner);
+        rightInstrumentSpinner = (Spinner) findViewById(R.id.right_instrument_spinner);
         ArrayAdapter<CharSequence> rightInstrumentAdapter = ArrayAdapter.createFromResource(this, R.array.Instruments_array, android.R.layout.simple_spinner_dropdown_item);
         rightInstrumentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         rightInstrumentSpinner.setAdapter(rightInstrumentAdapter);
@@ -222,67 +222,43 @@ public class MainActivity extends AppCompatActivity {
         //====================================================================================================================================================================
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
     public void leftAddEffect(View view){
         Spinner effect_1 = (Spinner) findViewById(R.id.left_effect_1_spinner);
         Spinner effect_2 = (Spinner) findViewById(R.id.left_effect_2_spinner);
         Spinner effect_3 = (Spinner) findViewById(R.id.left_effect_3_spinner);
+        leftHand.increaseEffectCount();
 
-        if(leftEffectCount < 3) {
-            leftEffectCount++;
-            switch(leftEffectCount) {
-                case 1:
-                    effect_1.setVisibility(view.VISIBLE);
-                    break;
-                case 2:
-                    effect_2.setVisibility(view.VISIBLE);
-                    break;
-                case 3:
-                    effect_3.setVisibility(view.VISIBLE);
-                    break;
-            }
+        switch(leftHand.getEffectCount()) {
+            case 1:
+                effect_1.setVisibility(view.VISIBLE);
+                break;
+            case 2:
+                effect_2.setVisibility(view.VISIBLE);
+                break;
+            case 3:
+                effect_3.setVisibility(view.VISIBLE);
+                break;
         }
+
         //Log.d("hello", "leftEffectCount:" + leftEffectCount);
     }
     public void leftRemoveEffect(View view){
         Spinner effect_1 = (Spinner) findViewById(R.id.left_effect_1_spinner);
         Spinner effect_2 = (Spinner) findViewById(R.id.left_effect_2_spinner);
         Spinner effect_3 = (Spinner) findViewById(R.id.left_effect_3_spinner);
-        if(leftEffectCount > 0) {
-            switch(leftEffectCount) {
-                case 3:
-                    effect_3.setVisibility(view.GONE);
-                    break;
-                case 2:
-                    effect_2.setVisibility(view.GONE);
-                    break;
-                case 1:
-                    effect_1.setVisibility(view.GONE);
-                    break;
-            }
-            leftEffectCount--;
-
+        switch(leftHand.getEffectCount()) {
+            case 3:
+                effect_3.setVisibility(view.GONE);
+                break;
+            case 2:
+                effect_2.setVisibility(view.GONE);
+                break;
+            case 1:
+                effect_1.setVisibility(view.GONE);
+                break;
         }
+
+        leftHand.decreaseEffectCount();
         //Log.d("hello", "leftEffectCount:" + leftEffectCount);
     }
     public void rightAddEffect(View view) {
@@ -328,35 +304,96 @@ public class MainActivity extends AppCompatActivity {
         //}
         //Log.d("hello", "leftEffectCount:" + leftEffectCount);
     }
-    /*
+
+    /*****************************************************
+     * Save the instance of the data when changing orientation
+     * @param outState
+     ******************************************************/
     @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+    protected void onSaveInstanceState(Bundle outState) {
         Log.d("save state", "onSaveInstanceState");
-        super.onSaveInstanceState(outState, outPersistentState);
-        outState.putInt("LEFT_EFFECT_COUNT", leftEffectCount);
-        outState.putInt("RIGHT_EFFECT_COUNT", rightEffectCount);
-
-        outState.putString("LEFT_EFFECT_1", LeftEffect_1);
-        outState.putString("LEFT_EFFECT_2", LeftEffect_2);
-        outState.putString("LEFT_EFFECT_3", LeftEffect_3);
-
-        outState.putString("RIGHT_EFFECT_1", RightEffect_1);
-        outState.putString("RIGHT_EFFECT_2", RightEffect_2);
-        outState.putString("RIGHT_EFFECT_3", RightEffect_3);
+        super.onSaveInstanceState(outState);
+        outState.putInt("LEFT_EFFECT_COUNT", leftHand.getEffectCount());
+        outState.putInt("RIGHT_EFFECT_COUNT", rightHand.getEffectCount());
     }
-    */
-    /*
+    /*****************************************************
+     * Retrieve the saved state before recreating the activity
+     ******************************************************/
+
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        Log.d("Restore","onRestoreInstanceState");
         super.onRestoreInstanceState(savedInstanceState);
-        leftEffectCount = savedInstanceState.getInt("LEFT_EFFECT_COUNT");
-        rightEffectCount = savedInstanceState.getInt("RIGHT_EFFECT_COUNT");
+        int testLeft;
+        int testRight;
+        testLeft = savedInstanceState.getInt("LEFT_EFFECT_COUNT");
+        testRight = savedInstanceState.getInt("RIGHT_EFFECT_COUNT");
 
-        Log.d("Restored","Left_Effect_count:" + leftEffectCount);
-        Log.d("Restored","right_effect count:" + rightEffectCount);
+        Log.d("Restored","testLeft:" + testLeft);
+        Log.d("Restored", "testRight:" + testRight);
+
+        Spinner left_effect_1 = (Spinner) findViewById(R.id.left_effect_1_spinner);
+        Spinner left_effect_2 = (Spinner) findViewById(R.id.left_effect_2_spinner);
+        Spinner left_effect_3 = (Spinner) findViewById(R.id.left_effect_3_spinner);
+
+        Spinner right_effect_1 = (Spinner) findViewById(R.id.right_effect_1_spinner);
+        Spinner right_effect_2 = (Spinner) findViewById(R.id.right_effect_2_spinner);
+        Spinner right_effect_3 = (Spinner) findViewById(R.id.right_effect_3_spinner);
+
+        leftHand.setEffectCount(testLeft);
+        rightHand.setEffectCount(testRight);
+        for(int i = 1 ; i < testLeft+1 ; i++){
+            switch (i) {
+                case 1:
+                    left_effect_1.setVisibility(View.VISIBLE);
+                    break;
+                case 2:
+                    left_effect_2.setVisibility(View.VISIBLE);
+                    break;
+                case 3:
+                    left_effect_3.setVisibility(View.VISIBLE);
+                    break;
+            }
+        }
+        for(int i = 1 ; i < testRight+1 ; i++){
+            switch (i) {
+                case 1:
+                    right_effect_1.setVisibility(View.VISIBLE);
+                    break;
+                case 2:
+                    right_effect_2.setVisibility(View.VISIBLE);
+                    break;
+                case 3:
+                    right_effect_3.setVisibility(View.VISIBLE);
+                    break;
+            }
+        }
 
     }
-    */
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }
 
 

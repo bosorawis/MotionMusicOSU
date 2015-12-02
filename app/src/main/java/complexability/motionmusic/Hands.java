@@ -25,6 +25,9 @@ public class Hands {
         instrument = "Electric Guitar";
         effectCount = 0;
     }
+    public void setEffectCount(int count){
+        effectCount = count;
+    }
     /*
     * Helper function to change effect
     * Takes New effect and effect number
