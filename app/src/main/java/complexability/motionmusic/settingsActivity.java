@@ -12,6 +12,8 @@ public class settingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
+        radioGroup_mode = (RadioGroup)findViewById(R.id.mode_radio_group);
+        radioButton_music = (RadioButton)findViewById(R.id.radio_button_select_music);
+        radioButton_soundFX = (RadioButton)findViewById(R.id.radio_button_select_soundFX);
     }
 }

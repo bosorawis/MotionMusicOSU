@@ -1,7 +1,9 @@
 package complexability.motionmusic;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -18,16 +20,25 @@ import complexability.motionmusic.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    Hands rightHand = new Hands();
-    Hands leftHand  = new Hands();
-    int leftEffectCount;
-    int rightEffectCount;
-    String LeftInstrument;
-    String RightInstrument;
-    String LeftEffect_1, LeftEffect_2, LeftEffect_3;
-    String RightEffect_1, RightEffect_2, RightEffect_3;
+    private Hands rightHand = new Hands();
+    private Hands leftHand  = new Hands();
+    /*
+    private int leftEffectCount;
+    private int rightEffectCount;
+    private String LeftInstrument;
+    private String RightInstrument;
+    private String LeftEffect_1, LeftEffect_2, LeftEffect_3;
+    private String RightEffect_1, RightEffect_2, RightEffect_3;
+    */
     private Spinner leftInstrumentSpinner;
     private Spinner rightInstrumentSpinner;
+    private Spinner leftEffectSpinner_1;
+    private Spinner leftEffectSpinner_2;
+    private Spinner leftEffectSpinner_3;
+    private Spinner rightEffectSpinner_1;
+    private Spinner rightEffectSpinner_2;
+    private Spinner rightEffectSpinner_3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //Log.d("Selected Item", "Left Instrument:" + LeftInstrument);
-        Log.d("onCreate", "leftEffectCount:" + leftEffectCount);
-        Log.d("onCreate", "rightEffectCount:" + rightEffectCount);
+        //Log.d("onCreate", "leftEffectCount:" + leftEffectCount);
+        //Log.d("onCreate", "rightEffectCount:" + rightEffectCount);
         /**********************************************************************************************
          *Create Left Instrument spinner
          ***********************************************************************************************/
@@ -91,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         /**********************************************************************************************
          *Left Create effect 1 spinner
          ***********************************************************************************************/
-        Spinner leftEffectSpinner_1 = (Spinner) findViewById(R.id.left_effect_1_spinner);
+        leftEffectSpinner_1 = (Spinner) findViewById(R.id.left_effect_1_spinner);
         ArrayAdapter<CharSequence> leftEffectAdapter_1 = ArrayAdapter.createFromResource(this, R.array.EffectName_array, android.R.layout.simple_spinner_dropdown_item);
         leftEffectAdapter_1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         leftEffectSpinner_1.setAdapter(leftEffectAdapter_1);
@@ -115,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         /**********************************************************************************************
          *Left Create effect 2 spinner
          ***********************************************************************************************/
-        Spinner leftEffectSpinner_2 = (Spinner) findViewById(R.id.left_effect_2_spinner);
+        leftEffectSpinner_2 = (Spinner) findViewById(R.id.left_effect_2_spinner);
         ArrayAdapter<CharSequence> leftEffectAdapter_2 = ArrayAdapter.createFromResource(this, R.array.EffectName_array, android.R.layout.simple_spinner_dropdown_item);
         leftEffectAdapter_2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         leftEffectSpinner_2.setAdapter(leftEffectAdapter_2);
@@ -135,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
         /**********************************************************************************************
          *Left Create effect 3 spinner
          ***********************************************************************************************/
-        Spinner leftEffectSpinner_3 = (Spinner) findViewById(R.id.left_effect_3_spinner);
+        leftEffectSpinner_3 = (Spinner) findViewById(R.id.left_effect_3_spinner);
         ArrayAdapter<CharSequence> leftEffectAdapter_3 = ArrayAdapter.createFromResource(this, R.array.EffectName_array, android.R.layout.simple_spinner_dropdown_item);
         leftEffectAdapter_3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         leftEffectSpinner_3.setAdapter(leftEffectAdapter_3);
@@ -158,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
         /**********************************************************************************************
          *Right Create effect 1 spinner
          ***********************************************************************************************/
-        Spinner rightEffectSpinner_1 = (Spinner) findViewById(R.id.right_effect_1_spinner);
+        rightEffectSpinner_1 = (Spinner) findViewById(R.id.right_effect_1_spinner);
         ArrayAdapter<CharSequence> rightEffectAdapter_1 = ArrayAdapter.createFromResource(this, R.array.EffectName_array, android.R.layout.simple_spinner_dropdown_item);
         rightEffectAdapter_1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         rightEffectSpinner_1.setAdapter(rightEffectAdapter_1);
@@ -180,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
         /**********************************************************************************************
          *Right Create effect 2 spinner
          ***********************************************************************************************/
-        Spinner rightEffectSpinner_2 = (Spinner) findViewById(R.id.right_effect_2_spinner);
+        rightEffectSpinner_2 = (Spinner) findViewById(R.id.right_effect_2_spinner);
         ArrayAdapter<CharSequence> rightEffectAdapter_2 = ArrayAdapter.createFromResource(this, R.array.EffectName_array, android.R.layout.simple_spinner_dropdown_item);
         rightEffectAdapter_2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         rightEffectSpinner_2.setAdapter(rightEffectAdapter_2);
@@ -201,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
         /**********************************************************************************************
          *Right Create effect 3 spinner
          ***********************************************************************************************/
-        Spinner rightEffectSpinner_3 = (Spinner) findViewById(R.id.right_effect_3_spinner);
+        rightEffectSpinner_3 = (Spinner) findViewById(R.id.right_effect_3_spinner);
         ArrayAdapter<CharSequence> rightEffectAdapter_3 = ArrayAdapter.createFromResource(this, R.array.EffectName_array, android.R.layout.simple_spinner_dropdown_item);
         rightEffectAdapter_3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         rightEffectSpinner_3.setAdapter(rightEffectAdapter_3);
@@ -389,6 +400,9 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Log.d("settings","Setting Clicked!!");
+            Intent intent = new Intent(this, settingsActivity.class);
+            startActivity(intent);
             return true;
         }
 
