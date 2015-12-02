@@ -13,29 +13,40 @@
     <!--====================================================-->
     <!-- Strings related to Settings -->
 
-    <!-- Example General settings -->
+    <!-- General settings -->
     <string name="pref_header_general">General</string>
 
-    <string name="pref_title_social_recommendations">Enable social recommendations</string>
-    <string name="pref_description_social_recommendations">Recommendations for people to contact
-        based on your message history
-    </string>
-
+    <!--
     <string name="pref_title_display_name">Display name</string>
-    <string name="pref_default_display_name">John Smith</string>
-
-    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
-    <string-array name="pref_example_list_titles">
-        <item>Always</item>
-        <item>When possible</item>
-        <item>Never</item>
+    <string name="pref_default_display_name">John Doe</string>
+    -->
+    <!-- Play mode selection -->
+    <string name="pref_play_mode_selection">Select Play mode</string>
+    <string-array name="pref_play_mode_available">
+        <item>Hands Orientation and Sweeps</item>
+        <item>Hands Orientation Only</item>
     </string-array>
-    <string-array name="pref_example_list_values">
+    <string-array name="pref_play_mode_list_values">
         <item>1</item>
         <item>0</item>
-        <item>-1</item>
     </string-array>
+    <!-- Sound mode selection -->
+    <string name="pref_sound_mode_selection">Select Sound mode</string>
+    <string-array name="pref_sound_mode_available">
+        <item>Music</item>
+        <item>Sound Effects</item>
 
+    </string-array>
+    <string-array name="pref_sound_mode_list_values">
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+    <!-- Ignore body movement -->
+    <string name="pref_enable_body_movement">Enable Body Movement</string>
+    <string name="pref_description_enable_body_movement">Enabling this will disable the
+        body movement cancellation
+    </string>
+    <!--=======================================================-->
     <!-- Example settings for Data & Sync -->
     <string name="pref_header_data_sync">Data &amp; sync</string>
 
@@ -68,4 +79,7 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
+
+    <!--String related to playmode-->
+    <string name="pref_config">Configurations</string>
 </resources>
