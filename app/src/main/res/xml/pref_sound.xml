@@ -4,62 +4,118 @@
          when checked/unchecked. -->
 
     <!-- NOTE: This preference will be enabled only when the checkbox above is checked. -->
-
-
+    <!--****************Left Hand*****************************-->
         <SwitchPreference
             android:key="leftInstrumentSwitch"
             android:title="@string/pref_volume_switch_left_instrument"
             android:defaultValue="true" />
 
         <SeekBarPreference
-        android:defaultValue="22"
+        android:defaultValue="50"
         android:title="@string/pref_volume_seek_left_instrument"
-        android:key="seekBar">
+        android:key="leftInstrumentSeekVolume">
         </SeekBarPreference>
         <PreferenceCategory
-            android:title="Effect 1">
+            android:title="@string/pref_left_effect_1_title">
             <SeekBarPreference
-                android:defaultValue="22"
-                android:title="@string/pref_left_effect_1_title">
-                android:key="seekBar">
+                android:defaultValue="50"
+                android:title="@string/pref_left_effect_1_volume"
+                android:key="leftEffect_1_volume">
             </SeekBarPreference>
 
             <SeekBarPreference
-                android:defaultValue="22"
+                android:defaultValue="50"
                 android:title="@string/pref_left_effect_1_level"
-                android:key="seekBar">
+                android:key="leftEffect_1_level">
             </SeekBarPreference>
         </PreferenceCategory>
 
         <PreferenceCategory
             android:title="@string/pref_left_effect_2_title">
             <SeekBarPreference
-                android:defaultValue="22"
+                android:defaultValue="50"
                 android:title="@string/pref_left_effect_2_volume"
-                android:key="seekBar">
+                android:key="leftEffect_2_volume">
             </SeekBarPreference>
 
             <SeekBarPreference
-                android:defaultValue="22"
+                android:defaultValue="50"
                 android:title="@string/pref_left_effect_2_level"
-                android:key="seekBar">
+                android:key="leftEffect_2_level">
             </SeekBarPreference>
         </PreferenceCategory>
 
         <PreferenceCategory
             android:title="@string/pref_left_effect_3_title">
             <SeekBarPreference
-                android:defaultValue="22"
+                android:defaultValue="50"
                 android:title="@string/pref_left_effect_3_volume"
-                android:key="seekBar">
+                android:key="leftEffect_3_volume">
             </SeekBarPreference>
 
             <SeekBarPreference
-                android:defaultValue="22"
+                android:defaultValue="50"
                 android:title="@string/pref_left_effect_3_level"
-                android:key="seekBar">
+                android:key="leftEffect_3_level">
             </SeekBarPreference>
         </PreferenceCategory>
+    <!--******************************************************-->
 
+    <!--****************RIGHT Hand*****************************-->
+    <SwitchPreference
+        android:key="rightInstrumentSwitch"
+        android:title="@string/pref_volume_switch_right_instrument"
+        android:defaultValue="true" />
+
+    <SeekBarPreference
+        android:defaultValue="50"
+        android:title="@string/pref_volume_seek_right_instrument"
+        android:key="rightInstrumentSeekVolume">
+    </SeekBarPreference>
+    <PreferenceCategory
+        android:title="Effect 1">
+        <SeekBarPreference
+            android:defaultValue="50"
+            android:title="@string/pref_right_effect_1_volume"
+            android:key="rightEffect_1_volume">
+        </SeekBarPreference>
+
+        <SeekBarPreference
+            android:defaultValue="50"
+            android:title="@string/pref_right_effect_1_level"
+            android:key="rightEffect_1_level">
+        </SeekBarPreference>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_right_effect_2_title">
+        <SeekBarPreference
+            android:defaultValue="50"
+            android:title="@string/pref_right_effect_2_volume"
+            android:key="rightEffect_2_volume">
+        </SeekBarPreference>
+
+        <SeekBarPreference
+            android:defaultValue="50"
+            android:title="@string/pref_right_effect_2_level"
+            android:key="rightEffect_2_level">
+        </SeekBarPreference>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_right_effect_3_title">
+        <SeekBarPreference
+            android:defaultValue="50"
+            android:title="@string/pref_right_effect_3_volume"
+            android:key="rightEffect_3_volume">
+        </SeekBarPreference>
+
+        <SeekBarPreference
+            android:defaultValue="50"
+            android:title="@string/pref_right_effect_3_level"
+            android:key="rightEffect_3_level">
+        </SeekBarPreference>
+    </PreferenceCategory>
+    <!--******************************************************-->
 
 </PreferenceScreen>

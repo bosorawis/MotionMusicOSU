@@ -82,24 +82,43 @@
 
     <!--String related to playmode-->
     <string name="pref_config">Configurations</string>
-
     <!--String for Audio Settings-->
     <string name="pref_header_sound">Sound</string>
+
+    <!--**********************LEFT HAND*****************************-->
     <string name="pref_volume_switch_left_instrument">Left Instrument</string>
     <string name="pref_volume_seek_left_instrument">Left Instrument Volume</string>
     <!--Left effect string names for preference page-->
     <!--Effect 1-->
-    <string name="pref_left_effect_1_title">Effect 1</string>
-    <string name="pref_left_effect_1_volume">Effect 1 Volume</string>
-    <string name="pref_left_effect_1_level">Effect 1 Level</string>
+    <string name="pref_left_effect_1_title">Left Effect 1</string>
+    <string name="pref_left_effect_1_volume">Left Effect 1 Volume</string>
+    <string name="pref_left_effect_1_level">Left Effect 1 Level</string>
     <!--Effect 2-->
-    <string name="pref_left_effect_2_title">Effect 2</string>
-    <string name="pref_left_effect_2_volume">Effect 2 Volume</string>
-    <string name="pref_left_effect_2_level">Effect 2 Level</string>
+    <string name="pref_left_effect_2_title">Left Effect 2</string>
+    <string name="pref_left_effect_2_volume">Left Effect 2 Volume</string>
+    <string name="pref_left_effect_2_level">Left Effect 2 Level</string>
     <!--Effect 3-->
-    <string name="pref_left_effect_3_title">Effect 3</string>
-    <string name="pref_left_effect_3_volume">Effect 3 Volume</string>
-    <string name="pref_left_effect_3_level">Effect 3 Level</string>
+    <string name="pref_left_effect_3_title">Left Effect 3</string>
+    <string name="pref_left_effect_3_volume">Left Effect 3 Volume</string>
+    <string name="pref_left_effect_3_level">Left Effect 3 Level</string>
+    <!--***************************************************************************-->
+
+    <!--**********************RIGHT HAND*****************************-->
+    <string name="pref_volume_switch_right_instrument">Right Instrument</string>
+    <string name="pref_volume_seek_right_instrument">Right Instrument Volume</string>
+    <!--Right effect string names for preference page-->
+    <!--Effect 1-->
+    <string name="pref_right_effect_1_title">Right Effect 1</string>
+    <string name="pref_right_effect_1_volume">Right Effect 1 Volume</string>
+    <string name="pref_right_effect_1_level">Right Effect 1 Level</string>
+    <!--Effect 2-->
+    <string name="pref_right_effect_2_title">Right Effect 2</string>
+    <string name="pref_right_effect_2_volume">Right Effect 2 Volume</string>
+    <string name="pref_right_effect_2_level">Right Effect 2 Level</string>
+    <!--Effect 3-->
+    <string name="pref_right_effect_3_title">Right Effect 3</string>
+    <string name="pref_right_effect_3_volume">Right Effect 3 Volume</string>
+    <string name="pref_right_effect_3_level">Right Effect 3 Level</string>
     <!--***************************************************************************-->
 
 </resources>

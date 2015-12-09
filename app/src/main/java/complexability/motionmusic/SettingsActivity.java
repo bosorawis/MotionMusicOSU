@@ -21,6 +21,7 @@ import android.preference.RingtonePreference;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.SeekBar;
 
 import java.util.List;
 
@@ -257,6 +258,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     public static class SoundPreferenceFragment extends PreferenceFragment{
         @Override
         public void onCreate(Bundle savedInstanceState) {
+            //SeekBar leftInstrumentVolume = (SeekBar) findPreference(R.id.leftInstrumentSeekVolume);
             Log.d("SoundPreferenceFragment", "OnCreate()");
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.pref_sound);
@@ -280,6 +282,10 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 
         }
     }
+    /*****************************************************************************************
+     *End of audio setting
+     ************************************************************************************/
+
 
     /**
      * This fragment shows notification preferences only. It is used when the
