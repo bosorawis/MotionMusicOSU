@@ -19,6 +19,7 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 
 import java.util.List;
@@ -35,9 +36,28 @@ import java.util.List;
  * API Guide</a> for more information on developing a Settings UI.
  */
 public class SettingsActivity extends AppCompatPreferenceActivity {
+    public static boolean go_back_to_main_page;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //Log.d("settings", "onResume");
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //Log.d("settings","onPause");
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        go_back_to_main_page = true;
+        Log.d("settings", "onCreate");
+
         //getActionBar().setDisplayHomeAsUpEnabled(true);
 
         setupActionBar();
@@ -52,6 +72,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         if (actionBar != null) {
             // Show the Up button in the action bar.
             actionBar.setDisplayHomeAsUpEnabled(true);
+
         }
     }
 
@@ -77,18 +98,18 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
      *
      * Navigate back from setting page to the application
      */
-    /*
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
-            case android.R.id.home:
+      int id = item.getItemId();
+            if (id == android.R.id.home && go_back_to_main_page) {
+                Log.d("Settings", "back pressed");
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
-        }
+            }
         return super.onOptionsItemSelected(item);
     }
-    */
+
     /**
      * {@inheritDoc}
      */
@@ -177,7 +198,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
      */
     protected boolean isValidFragment(String fragmentName) {
         return PreferenceFragment.class.getName().equals(fragmentName)
-                || GeneralPreferenceFragment.class.getName().equals(fragmentName);
+                || GeneralPreferenceFragment.class.getName().equals(fragmentName)
+                ||SoundPreferenceFragment.class.getName().equals(fragmentName);
                 //|| DataSyncPreferenceFragment.class.getName().equals(fragmentName)
                 //|| NotificationPreferenceFragment.class.getName().equals(fragmentName);
     }
@@ -192,6 +214,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.pref_general);
+            Log.d("settings", "onCreate general");
+            go_back_to_main_page = false;
             setHasOptionsMenu(true);
 
             // Bind the summaries of EditText/List/Dialog/Ringtone preferences
@@ -202,6 +226,19 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             bindPreferenceSummaryToValue(findPreference("Play_mode"));
             //bindPreferenceSummaryToValue(findPreference("Enable_body_movement"));
         }
+        /*
+        @Override
+        public void onDestroy() {
+            super.onDestroy();
+            Log.d("general", "onDestroy");
+        }
+        */
+        @Override
+        public void onPause() {
+            super.onPause();
+            go_back_to_main_page = true;
+            Log.d("general", "onPause");
+        }
 
         @Override
         public boolean onOptionsItemSelected(MenuItem item) {
@@ -211,6 +248,36 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 return true;
             }
             return super.onOptionsItemSelected(item);
+        }
+    }
+    /**
+     * Fragment for audio settings
+     *
+     */
+    public static class SoundPreferenceFragment extends PreferenceFragment{
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            Log.d("SoundPreferenceFragment", "OnCreate()");
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.pref_sound);
+            setHasOptionsMenu(true);
+            // Bind the summaries of EditText/List/Dialog/Ringtone preferences
+            // to their values. When their values change, their summaries are
+            // updated to reflect the new value, per the Android Design
+            // guidelines.
+
+
+        }
+
+        @Override
+        public boolean onOptionsItemSelected(MenuItem item) {
+            int id = item.getItemId();
+            if (id == android.R.id.home){
+                startActivity(new Intent(getActivity(), SettingsActivity.class));
+                return true;
+            }
+            return super.onOptionsItemSelected(item);
+
         }
     }
 

@@ -315,7 +315,18 @@ public class MainActivity extends AppCompatActivity {
         //}
         //Log.d("hello", "leftEffectCount:" + leftEffectCount);
     }
+    public void testButtonClicked(View view){
+        Log.d("MainActivity", "test clicked");
+        Log.d("MainActivity", "Left Instrument:" + leftHand.getInstrument());
+        for(int i = 1 ; i < leftHand.getEffectCount() + 1 ; i++){
+            Log.d("MainActivity", "     Left Effect " + i + ": " + leftHand.getEffect(i));
+        }
+        Log.d("MainActivity", "Right Instrument:" + rightHand.getInstrument());
+        for(int i = 1 ; i < rightHand.getEffectCount() + 1 ; i++){
+            Log.d("MainActivity", "     Right Effect " + i + ": " + rightHand.getEffect(i));
+        }
 
+    }
     /*****************************************************
      * Save the instance of the data when changing orientation
      * @param outState

@@ -82,4 +82,24 @@
 
     <!--String related to playmode-->
     <string name="pref_config">Configurations</string>
+
+    <!--String for Audio Settings-->
+    <string name="pref_header_sound">Sound</string>
+    <string name="pref_volume_switch_left_instrument">Left Instrument</string>
+    <string name="pref_volume_seek_left_instrument">Left Instrument Volume</string>
+    <!--Left effect string names for preference page-->
+    <!--Effect 1-->
+    <string name="pref_left_effect_1_title">Effect 1</string>
+    <string name="pref_left_effect_1_volume">Effect 1 Volume</string>
+    <string name="pref_left_effect_1_level">Effect 1 Level</string>
+    <!--Effect 2-->
+    <string name="pref_left_effect_2_title">Effect 2</string>
+    <string name="pref_left_effect_2_volume">Effect 2 Volume</string>
+    <string name="pref_left_effect_2_level">Effect 2 Level</string>
+    <!--Effect 3-->
+    <string name="pref_left_effect_3_title">Effect 3</string>
+    <string name="pref_left_effect_3_volume">Effect 3 Volume</string>
+    <string name="pref_left_effect_3_level">Effect 3 Level</string>
+    <!--***************************************************************************-->
+
 </resources>

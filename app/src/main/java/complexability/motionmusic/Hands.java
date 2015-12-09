@@ -97,7 +97,7 @@ public class Hands {
     public static class effect {
         protected boolean status;
         protected String effectName;
-
+        protected int level;
         effect(String Name){
             effectName = Name;
         }
@@ -109,6 +109,19 @@ public class Hands {
         }
         public boolean getStatus(){
             return status;
+        }
+        public int getLevel(){
+            return level;
+        }
+        public void increaseLevel() {
+            if (level < 100) {
+                level++;
+            }
+        }
+        public void decreaseLevel(){
+            if(level > 0){
+                level--;
+            }
         }
     }
 

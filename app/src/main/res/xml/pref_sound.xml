@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- A 'parent' preference, which enables/disables child preferences (below)
+         when checked/unchecked. -->
+
+    <!-- NOTE: This preference will be enabled only when the checkbox above is checked. -->
+
+
+        <SwitchPreference
+            android:key="leftInstrumentSwitch"
+            android:title="@string/pref_volume_switch_left_instrument"
+            android:defaultValue="true" />
+
+        <SeekBarPreference
+        android:defaultValue="22"
+        android:title="@string/pref_volume_seek_left_instrument"
+        android:key="seekBar">
+        </SeekBarPreference>
+        <PreferenceCategory
+            android:title="Effect 1">
+            <SeekBarPreference
+                android:defaultValue="22"
+                android:title="@string/pref_left_effect_1_title">
+                android:key="seekBar">
+            </SeekBarPreference>
+
+            <SeekBarPreference
+                android:defaultValue="22"
+                android:title="@string/pref_left_effect_1_level"
+                android:key="seekBar">
+            </SeekBarPreference>
+        </PreferenceCategory>
+
+        <PreferenceCategory
+            android:title="@string/pref_left_effect_2_title">
+            <SeekBarPreference
+                android:defaultValue="22"
+                android:title="@string/pref_left_effect_2_volume"
+                android:key="seekBar">
+            </SeekBarPreference>
+
+            <SeekBarPreference
+                android:defaultValue="22"
+                android:title="@string/pref_left_effect_2_level"
+                android:key="seekBar">
+            </SeekBarPreference>
+        </PreferenceCategory>
+
+        <PreferenceCategory
+            android:title="@string/pref_left_effect_3_title">
+            <SeekBarPreference
+                android:defaultValue="22"
+                android:title="@string/pref_left_effect_3_volume"
+                android:key="seekBar">
+            </SeekBarPreference>
+
+            <SeekBarPreference
+                android:defaultValue="22"
+                android:title="@string/pref_left_effect_3_level"
+                android:key="seekBar">
+            </SeekBarPreference>
+        </PreferenceCategory>
+
+
+</PreferenceScreen>

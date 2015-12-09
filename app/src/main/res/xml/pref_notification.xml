@@ -24,4 +24,5 @@
         android:title="@string/pref_title_vibrate"
         android:defaultValue="true" />
 
+
 </PreferenceScreen>
